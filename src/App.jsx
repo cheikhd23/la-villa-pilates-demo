@@ -1,7 +1,7 @@
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import { Intro, Methods, Services, Schedule, Packages } from './components/CoreSections'
-import { Instructors, Experience, Progress, Testimonials } from './components/StorySections'
+import { InsideStudio, Instructors, Experience, Progress, Testimonials } from './components/StorySections'
 import { Booking, Instagram, Location, FinalCTA, Footer } from './components/ConversionSections'
 
 export default function App() {
@@ -11,6 +11,7 @@ export default function App() {
       <main>
         <Hero />
         <Intro />
+        <InsideStudio />
         <Methods />
         <Services />
         <Schedule />

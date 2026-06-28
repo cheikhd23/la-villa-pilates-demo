@@ -1,6 +1,21 @@
 import { Quote, MoveUpRight, Heart, ScanLine, ShieldCheck, Gauge, Activity } from 'lucide-react'
 import { Reveal, SectionHeading, Eyebrow } from './ui'
 
+export function InsideStudio() {
+  const real = '/images/instagram-reference/'
+  return <section className="section bg-sage/25"><div className="container">
+    <div className="grid gap-10 lg:grid-cols-[.7fr_1.3fr] lg:items-end"><SectionHeading eyebrow="La maison" title="Un lieu qui ne ressemble à aucun autre studio" text="À Riviera–Cocody, La Villa accueille le mouvement dans une maison lumineuse, intime et profondément vivante." /><Reveal className="lg:pb-2"><p className="display max-w-xl text-2xl leading-snug text-cocoa sm:text-3xl">Des arches, de la lumière naturelle, un jardin tropical et des espaces conçus pour ralentir avant même que la séance commence.</p></Reveal></div>
+    <div className="mt-14 grid grid-cols-2 gap-3 sm:grid-cols-12 sm:gap-4">
+      <Reveal className="col-span-2 overflow-hidden rounded-[1.5rem] bg-white sm:col-span-5 sm:row-span-2"><img src={`${real}villa-pilates-01.jpeg`} alt="Salle Reformer réelle de La Villa Pilates" className="h-full min-h-[430px] w-full object-cover" /><p className="p-4 text-[10px] uppercase tracking-[.18em] text-muted">La salle Reformer · Le studio réel</p></Reveal>
+      <Reveal delay={.05} className="col-span-1 overflow-hidden rounded-[1.5rem] bg-white sm:col-span-4"><img src={`${real}villa-pilates-03.jpeg`} alt="Salon d’accueil réel de La Villa Pilates" className="aspect-[4/5] w-full object-cover sm:aspect-[4/3]" /><p className="p-4 text-[10px] uppercase tracking-[.18em] text-muted">Le salon</p></Reveal>
+      <Reveal delay={.1} className="col-span-1 overflow-hidden rounded-[1.5rem] bg-white sm:col-span-3"><img src={`${real}villa-pilates-05.jpeg`} alt="Accessoires Pilates au studio" className="aspect-[4/5] w-full object-cover sm:aspect-[4/3]" /><p className="p-4 text-[10px] uppercase tracking-[.18em] text-muted">Les détails</p></Reveal>
+      <Reveal delay={.1} className="col-span-1 overflow-hidden rounded-[1.5rem] bg-white sm:col-span-3"><img src={`${real}villa-pilates-04.jpeg`} alt="Réception réelle de La Villa Pilates" className="aspect-[4/5] w-full object-cover sm:aspect-[4/3]" /><p className="p-4 text-[10px] uppercase tracking-[.18em] text-muted">L’accueil</p></Reveal>
+      <Reveal delay={.15} className="col-span-1 overflow-hidden rounded-[1.5rem] bg-white sm:col-span-4"><img src={`${real}villa-pilates-02.jpeg`} alt="Vue aérienne de La Villa Pilates" className="aspect-[4/5] w-full object-cover sm:aspect-[4/3]" /><p className="p-4 text-[10px] uppercase tracking-[.18em] text-muted">La Villa · Cocody</p></Reveal>
+    </div>
+    <p className="mt-5 text-xs italic text-muted">Photographies du lieu issues du listing public BAAB, présentées à taille éditoriale. Autorisation à confirmer avant publication officielle.</p>
+  </div></section>
+}
+
 export function Instructors() {
   return <section className="section bg-cream"><div className="container grid gap-12 lg:grid-cols-[1fr_1.05fr] lg:items-center">
     <Reveal className="relative"><div className="image-arch mx-auto max-w-[520px]"><img src="/images/instructor-placeholder.png" alt="Portrait d’une coach Pilates — visuel de démonstration" className="h-[620px] w-full object-cover object-top" /></div><span className="absolute -bottom-5 right-0 rounded-full bg-rose px-5 py-3 text-[10px] uppercase tracking-[.18em] sm:right-5">Profil de démonstration</span></Reveal>
