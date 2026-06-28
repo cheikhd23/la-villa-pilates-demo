@@ -23,9 +23,10 @@ export function Booking() {
 }
 
 const crops = ['object-[25%_45%]','object-[52%_46%]','object-[76%_48%]','object-[67%_40%]','object-[48%_46%]','object-[15%_48%]']
+const galleryImages = ['/images/studio-interior-premium.png','/images/private-session-premium.png','/images/pilates-class-placeholder.png','/images/transformation-premium.png','/images/instructor-placeholder.png','/images/studio-hero-placeholder.png']
 export function Instagram() {
   return <section className="section bg-cream"><div className="container"><div className="flex flex-col justify-between gap-7 sm:flex-row sm:items-end"><SectionHeading eyebrow="@lavillapilates" title="L’univers La Villa Pilates" /><a href="https://www.instagram.com/lavillapilates/" target="_blank" rel="noreferrer" className="btn-outline-dark"><InstagramIcon size={17}/> Voir Instagram</a></div>
-    <div className="mt-12 grid grid-cols-2 gap-2 md:grid-cols-3">{crops.map((crop,i)=><Reveal delay={(i%3)*.06} key={crop} className={`group overflow-hidden ${i===0||i===5?'aspect-[4/5]':'aspect-square'}`}><img src={`/images/instagram-reference/villa-pilates-0${i+1}.${i===5?'jpg':'jpeg'}`} alt="La Villa Pilates — visuel temporaire issu du listing public BAAB" className={`h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 ${crop}`} /></Reveal>)}</div><p className="mt-5 text-xs italic text-muted">Visuels temporaires issus du listing public BAAB du studio — droits et autorisation d’usage à confirmer avant publication.</p>
+    <div className="mt-12 grid grid-cols-2 gap-2 md:grid-cols-3">{crops.map((crop,i)=><Reveal delay={(i%3)*.06} key={crop} className={`group overflow-hidden rounded-xl ${i===0||i===5?'aspect-[4/5]':'aspect-square'}`}><img src={galleryImages[i]} alt="L’univers premium La Villa Pilates — visuel de démonstration" className={`h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 ${crop}`} /></Reveal>)}</div><p className="mt-5 text-xs italic text-muted">Direction artistique de démonstration inspirée du studio réel — à remplacer ou valider avec La Villa avant publication officielle.</p>
   </div></section>
 }
 

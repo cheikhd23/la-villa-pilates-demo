@@ -11,8 +11,8 @@ export function Intro() {
 
 export function Methods() {
   const methods = [
-    { n:'01', title:'Pilates', icon:Waves, image:'/images/instagram-reference/villa-pilates-01.jpeg', pos:'object-center', text:'Une méthode douce et précise pour renforcer les muscles profonds, améliorer la posture, développer la souplesse et reconnecter le corps à la respiration.', tags:['Contrôle', 'Posture', 'Respiration'] },
-    { n:'02', title:'Lagree', icon:Sparkles, image:'/images/pilates-class-placeholder.png', pos:'object-center', text:'Une méthode plus intense et dynamique, idéale pour sculpter le corps, développer l’endurance musculaire et obtenir une séance complète à faible impact.', tags:['Intensité', 'Endurance', 'Full body'] }
+    { n:'01', title:'Pilates', icon:Waves, image:'/images/studio-interior-premium.png', pos:'object-center', text:'Une méthode douce et précise pour renforcer les muscles profonds, améliorer la posture, développer la souplesse et reconnecter le corps à la respiration.', tags:['Contrôle', 'Posture', 'Respiration'] },
+    { n:'02', title:'Lagree', icon:Sparkles, image:'/images/transformation-premium.png', pos:'object-center', text:'Une méthode plus intense et dynamique, idéale pour sculpter le corps, développer l’endurance musculaire et obtenir une séance complète à faible impact.', tags:['Intensité', 'Endurance', 'Full body'] }
   ]
   return <section id="methodes" className="section"><div className="container"><SectionHeading eyebrow="Deux méthodes, une intention" title="Bouger avec précision. Progresser avec intention." text="Débutante ou pratiquante confirmée, choisissez l’approche qui répond à votre énergie et à vos objectifs du moment." />
     <div className="mt-14 grid gap-5 lg:grid-cols-2">{methods.map((m,i)=><Reveal delay={i*.1} key={m.title} className="group overflow-hidden rounded-[2rem] bg-white shadow-soft">
@@ -24,17 +24,18 @@ export function Methods() {
 }
 
 const services = [
-  ['Cours collectifs','L’énergie du groupe, un rythme guidé et une attention précise dans un format intimiste.',Users,'01','object-[48%_50%]'],
-  ['Séances privées','Un accompagnement entièrement personnalisé pour corriger, progresser et gagner en confiance.',UserRound,'02','object-[67%_45%]'],
-  ['Coaching débutant','Une entrée en matière rassurante pour comprendre la machine, les gestes et votre respiration.',Leaf,'03','object-[35%_50%]'],
-  ['Programmes transformation','Un parcours régulier sur plusieurs semaines, structuré autour de vos objectifs réels.',Timer,'04','object-[82%_50%]']
+  ['Cours collectifs','L’énergie du groupe, un rythme guidé et une attention précise dans un format intimiste.',Users,'01','/images/pilates-class-placeholder.png','object-center'],
+  ['Séances privées','Un accompagnement entièrement personnalisé pour corriger, progresser et gagner en confiance.',UserRound,'02','/images/private-session-premium.png','object-center'],
+  ['Coaching débutant','Une entrée en matière rassurante pour comprendre la machine, les gestes et votre respiration.',Leaf,'03','/images/studio-hero-placeholder.png','object-[67%_45%]'],
+  ['Programmes transformation','Un parcours régulier sur plusieurs semaines, structuré autour de vos objectifs réels.',Timer,'04','/images/transformation-premium.png','object-center']
 ]
 
 export function Services() {
   return <section id="services" className="section bg-ink text-cream"><div className="container"><SectionHeading light eyebrow="Nos accompagnements" title="Votre pratique, à votre rythme" text="Des formats pensés pour transformer chaque rendez-vous avec vous-même en une expérience claire, motivante et durable." />
-    <div className="mt-14 grid gap-px overflow-hidden rounded-[2rem] bg-white/10 md:grid-cols-2">{services.map(([title,text,Icon,n,pos],i)=><motion.article {...{initial:{opacity:0},whileInView:{opacity:1},viewport:{once:true},transition:{delay:i*.08}}} key={title} className="group relative min-h-[390px] overflow-hidden bg-ink p-7 sm:p-9">
-      <img src={i===0?'/images/pilates-class-placeholder.png':'/images/studio-hero-placeholder.png'} alt="" className={`absolute inset-0 h-full w-full object-cover opacity-0 transition duration-700 group-hover:scale-105 group-hover:opacity-35 ${pos}`} />
-      <div className="relative flex h-full flex-col"><div className="flex items-center justify-between"><span className="text-xs text-cream/40">{n}</span><Icon strokeWidth={1.2} className="text-rose" /></div><div className="mt-auto"><h3 className="display max-w-xs text-4xl">{title}</h3><p className="mt-4 max-w-sm leading-7 text-cream/60">{text}</p><div className="mt-6"><ArrowLink light>En savoir plus</ArrowLink></div></div></div>
+    <div className="mt-14 grid gap-3 md:grid-cols-2">{services.map(([title,text,Icon,n,image,pos],i)=><motion.article {...{initial:{opacity:0,y:20},whileInView:{opacity:1,y:0},viewport:{once:true},transition:{delay:i*.08}}} key={title} className="group relative min-h-[500px] overflow-hidden rounded-[1.6rem] bg-ink p-7 sm:min-h-[560px] sm:p-9">
+      <img src={image} alt={title} className={`absolute inset-0 h-full w-full object-cover opacity-65 transition duration-700 group-hover:scale-105 group-hover:opacity-75 ${pos}`} />
+      <div className="absolute inset-0 bg-gradient-to-b from-ink/20 via-ink/5 to-ink/95" />
+      <div className="relative flex h-full flex-col"><div className="flex items-center justify-between"><span className="rounded-full bg-ink/35 px-3 py-2 text-xs text-cream/80 backdrop-blur">{n}</span><span className="grid size-11 place-items-center rounded-full bg-cream/90 text-ink"><Icon strokeWidth={1.2} /></span></div><div className="mt-auto"><h3 className="display max-w-sm text-4xl sm:text-5xl">{title}</h3><p className="mt-4 max-w-md leading-7 text-cream/80">{text}</p><div className="mt-6"><ArrowLink light>En savoir plus</ArrowLink></div></div></div>
     </motion.article>)}</div>
   </div></section>
 }
