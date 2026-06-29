@@ -2,7 +2,7 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import { Intro, Methods, Services, Schedule, Packages } from './components/CoreSections'
 import { InsideStudio, Instructors, Experience, Progress, Testimonials } from './components/StorySections'
-import { Booking, Instagram, Location, FinalCTA, Footer } from './components/ConversionSections'
+import { Booking, Instagram, Location, FinalCTA, Footer, FloatingBooking } from './components/ConversionSections'
 
 export default function App() {
   return (
@@ -26,6 +26,7 @@ export default function App() {
         <FinalCTA />
       </main>
       <Footer />
+      <FloatingBooking />
     </div>
   )
 }

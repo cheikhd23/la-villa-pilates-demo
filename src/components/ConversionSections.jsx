@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Camera as InstagramIcon, MapPin, MessageCircle, Mail, ArrowUpRight, CheckCircle2 } from 'lucide-react'
 import { Reveal, SectionHeading, Eyebrow } from './ui'
 
@@ -23,21 +23,31 @@ export function Booking() {
 }
 
 const crops = ['object-[25%_45%]','object-[52%_46%]','object-[76%_48%]','object-[67%_40%]','object-[48%_46%]','object-[15%_48%]']
-const galleryImages = ['/images/studio-interior-premium.png','/images/private-session-premium.png','/images/pilates-class-placeholder.png','/images/transformation-premium.png','/images/instructor-placeholder.png','/images/studio-hero-placeholder.png']
+const galleryImages = ['/images/studio-interior-premium.jpg','/images/private-session-premium.jpg','/images/collective-diverse-premium.jpg','/images/transformation-premium.jpg','/images/beginner-coaching-premium.jpg','/images/studio-lounge-premium.jpg']
 export function Instagram() {
   return <section className="section bg-cream"><div className="container"><div className="flex flex-col justify-between gap-7 sm:flex-row sm:items-end"><SectionHeading eyebrow="@lavillapilates" title="L’univers La Villa Pilates" /><a href="https://www.instagram.com/lavillapilates/" target="_blank" rel="noreferrer" className="btn-outline-dark"><InstagramIcon size={17}/> Voir Instagram</a></div>
-    <div className="mt-12 grid grid-cols-2 gap-2 md:grid-cols-3">{crops.map((crop,i)=><Reveal delay={(i%3)*.06} key={crop} className={`group overflow-hidden rounded-xl ${i===0||i===5?'aspect-[4/5]':'aspect-square'}`}><img src={galleryImages[i]} alt="L’univers premium La Villa Pilates — visuel de démonstration" className={`h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 ${crop}`} /></Reveal>)}</div><p className="mt-5 text-xs italic text-muted">Direction artistique de démonstration inspirée du studio réel — à remplacer ou valider avec La Villa avant publication officielle.</p>
+    <div className="mt-12 grid grid-cols-2 gap-2 md:grid-cols-3">{crops.map((crop,i)=><Reveal delay={(i%3)*.06} key={crop} className={`group overflow-hidden rounded-xl ${i===0||i===5?'aspect-[4/5]':'aspect-square'}`}><img src={galleryImages[i]} alt="L’univers premium La Villa Pilates — visuel de démonstration" loading="lazy" decoding="async" className={`h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 ${crop}`} /></Reveal>)}</div><p className="mt-5 text-xs italic text-muted">Direction artistique de démonstration inspirée du studio réel — à remplacer ou valider avec La Villa avant publication officielle.</p>
   </div></section>
 }
 
 export function Location() {
   return <section className="section"><div className="container grid gap-12 lg:grid-cols-2 lg:items-center"><div><SectionHeading eyebrow="Nous trouver" title="Votre respiration au cœur d’Abidjan" text="Un studio pensé pour intégrer le bien-être dans le rythme de vie urbain d’Abidjan." /><Reveal className="mt-9 divide-y divide-ink/10 border-y border-ink/10">{[[MapPin,'Adresse','Beverly Hills, Villa N°207 · Riviera, Cocody'],[MessageCircle,'WhatsApp','07 97 25 23 25'],[InstagramIcon,'Instagram','@lavillapilates']].map(([Icon,l,v])=><div key={l} className="flex items-center gap-5 py-5"><Icon strokeWidth={1.3}/><div><span className="block text-[10px] uppercase tracking-[.2em] text-muted">{l}</span><b className="mt-1 block text-sm font-medium">{v}</b></div></div>)}</Reveal><p className="mt-3 text-xs italic text-muted">Coordonnées issues d’un listing public — à confirmer avant mise en ligne.</p></div>
-    <Reveal className="relative min-h-[480px] overflow-hidden rounded-[2rem] bg-[#d8d0c4]"><div className="map-grid absolute inset-0 opacity-40"/><div className="absolute left-[22%] top-[18%] h-[75%] w-2 rotate-[32deg] bg-ivory/80"/><div className="absolute left-[58%] top-[-10%] h-[120%] w-3 -rotate-[18deg] bg-ivory/75"/><div className="absolute left-[18%] top-[57%] h-2 w-[90%] -rotate-[9deg] bg-ivory/75"/><div className="absolute inset-0 grid place-items-center"><div className="grid size-28 place-items-center rounded-full bg-cocoa text-center text-white shadow-2xl"><div><MapPin className="mx-auto"/><span className="mt-2 block text-[9px] uppercase tracking-widest">La Villa</span></div></div></div><span className="absolute bottom-5 left-5 rounded-full bg-ivory/90 px-4 py-2 text-[10px] uppercase tracking-[.15em]">Google Maps · intégration à venir</span></Reveal>
+    <Reveal className="group relative min-h-[540px] overflow-hidden rounded-[2rem] bg-ink"><img src="/images/studio-aerial-premium.jpg" alt="Vue aérienne de La Villa Pilates à Cocody" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover transition-transform duration-1000 group-hover:scale-[1.025]"/><div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-transparent to-transparent"/><div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-5 p-6 text-white sm:p-8"><div><span className="text-[9px] uppercase tracking-[.22em] text-white/60">Riviera · Cocody</span><p className="display mt-2 text-3xl">La Villa, au calme de la ville.</p></div><a href="https://www.google.com/maps/dir/?api=1&destination=5.3414558764059,-3.962178948751" target="_blank" rel="noreferrer" className="grid size-12 shrink-0 place-items-center rounded-full bg-ivory text-ink"><ArrowUpRight size={18}/></a></div></Reveal>
   </div></section>
 }
 
+export function FloatingBooking() {
+  const [visible, setVisible] = useState(false)
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 620)
+    onScroll(); window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+  return <a href="#booking" aria-hidden={!visible} tabIndex={visible ? 0 : -1} className={`fixed bottom-4 left-4 right-4 z-40 flex items-center justify-between rounded-full bg-ink px-5 py-4 text-xs font-medium text-white shadow-2xl transition-all duration-500 md:hidden ${visible?'translate-y-0 opacity-100':'pointer-events-none translate-y-8 opacity-0'}`}><span>Réserver ma première séance</span><ArrowUpRight size={17}/></a>
+}
+
 export function FinalCTA() {
-  return <section className="relative overflow-hidden bg-ink py-28 text-white sm:py-36"><img src="/images/studio-hero-placeholder.png" alt="" className="absolute inset-0 h-full w-full object-cover object-[60%_48%] opacity-25"/><div className="absolute inset-0 bg-ink/45"/><Reveal className="container relative text-center"><div className="flex justify-center"><Eyebrow light>Votre moment commence ici</Eyebrow></div><h2 className="display mx-auto mt-6 max-w-4xl text-5xl leading-none sm:text-7xl lg:text-8xl">Commencez votre première séance</h2><p className="mx-auto mt-7 max-w-2xl leading-7 text-white/70">Que vous soyez débutant ou déjà pratiquant, La Villa Pilates vous accompagne dans une approche élégante, progressive et personnalisée du mouvement.</p><div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row"><a className="btn-light" href="#booking">Réserver une séance d’essai</a><a className="btn-outline" href="https://wa.me/2250797252325">Contacter le studio</a></div></Reveal></section>
+  return <section className="relative overflow-hidden bg-ink py-28 text-white sm:py-36"><img src="/images/studio-hero-placeholder.jpg" alt="" loading="lazy" decoding="async" className="absolute inset-0 h-full w-full object-cover object-[60%_48%] opacity-25"/><div className="absolute inset-0 bg-ink/45"/><Reveal className="container relative text-center"><div className="flex justify-center"><Eyebrow light>Votre moment commence ici</Eyebrow></div><h2 className="display mx-auto mt-6 max-w-4xl text-5xl leading-none sm:text-7xl lg:text-8xl">Commencez votre première séance</h2><p className="mx-auto mt-7 max-w-2xl leading-7 text-white/70">Que vous soyez débutant ou déjà pratiquant, La Villa Pilates vous accompagne dans une approche élégante, progressive et personnalisée du mouvement.</p><div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row"><a className="btn-light" href="#booking">Réserver une séance d’essai</a><a className="btn-outline" href="https://wa.me/2250797252325">Contacter le studio</a></div></Reveal></section>
 }
 
 export function Footer() {

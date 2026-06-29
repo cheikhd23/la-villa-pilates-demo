@@ -13,13 +13,13 @@
 }
 
 :root { font-family: "DM Sans", sans-serif; color: #302923; background: #f8f5ef; font-synthesis: none; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
 body { margin: 0; min-width: 320px; }
 button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
 a { text-decoration: none; }
 ::selection { background: #9fb5a8; color: #302923; }
-.display { font-family: "Italiana", serif; }
-.display em { font-family: "Italiana", serif; }
+.display { font-family: "Instrument Serif", serif; font-weight: 400; letter-spacing: -.025em; }
+.display em { font-family: "Instrument Serif", serif; }
 .container { width: min(100% - 2.5rem, 80rem); margin-inline: auto; }
 .section { padding-block: 6.5rem; }
 .eyebrow { display: flex; align-items: center; gap: .75rem; font-size: .63rem; letter-spacing: .24em; text-transform: uppercase; font-weight: 600; }
@@ -44,7 +44,10 @@ a { text-decoration: none; }
 .footer-title ~ div a { transition: color .2s; }
 .footer-title ~ div a:hover { color: #f8f5ef; }
 .map-grid { background-image: linear-gradient(rgba(255,255,255,.45) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.45) 1px, transparent 1px); background-size: 44px 44px; }
+.grain { background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.24'/%3E%3C/svg%3E"); mix-blend-mode: soft-light; pointer-events: none; }
+.brand-strip-track { animation: marquee 26s linear infinite; }
+@keyframes marquee { to { transform: translateX(-50%); } }
 
 @media (min-width: 640px) { .container { width: min(100% - 4rem, 80rem); } }
 @media (min-width: 1024px) { .section { padding-block: 8.5rem; } }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } .brand-strip-track { animation: none; } }
